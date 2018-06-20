@@ -1,0 +1,4 @@
+2018-02-19T10:04:22.844 : purchaseItem: 1 Error Message: Please add additional funds
+2018-02-19T10:04:36.223 : purchaseItem: 5 Error Message: Sorry - Item not found
+2018-02-19T10:04:57.099 : purchaseItem: 1
+2018-05-04T14:18:10.880 : purchaseItem: 3

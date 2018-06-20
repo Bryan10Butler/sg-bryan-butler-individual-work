@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/aop
+          http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+    <!-- Bean definitions go here -->
+
+    <!--create instance of UserIOConsoleImpl as userIo-->
+    <bean id="userIo" class="com.sg.baseballleague.ui.UserIOConsoleImpl"/>
+    <!--create instance of BaseballView as myView-->
+    <!--inject userIo into myView as myView depends on userIo-->
+    <bean id="myView" class="com.sg.baseballleague.ui.BaseballView">
+        <constructor-arg ref="userIo"/>
+    </bean>
+
+    <!--create instance of BaseBallTeamDaoFileImpl as teamDao-->
+    <!--inject teamFile.txt-->
+    <bean id="teamDao" class="com.sg.baseballleague.dao.BaseballTeamDaoFileImpl">
+        <constructor-arg value="teamFile.txt"/>
+    </bean>
+    
+    <!--create instance of BaseBallPlayerDaoFileImpl as playerDao-->
+    <!--inject filename playerFile.txt-->
+    <bean id="playerDao" class="com.sg.baseballleague.dao.BaseballPlayerDaoFileImpl">
+        <constructor-arg value="playerFile.txt"/>
+    </bean>
+
+    <!--inject teamDao and playerDao into myService as myService depends on both-->
+    <bean id="myService" class="com.sg.baseballleague.service.BaseballServiceLayerImpl">
+        <constructor-arg ref="teamDao"/>
+        <constructor-arg ref="playerDao"/>
+    </bean>
+
+    <!--create instance of BaseballController as myController-->
+    <!--inject myService and myView into BaseballController as BaseballController depends on both-->
+    <bean id="myController" class="com.sg.baseballleague.controller.BaseballController">
+        <constructor-arg ref="myService"/>
+        <constructor-arg ref="myView"/>
+    </bean>
+
+</beans>

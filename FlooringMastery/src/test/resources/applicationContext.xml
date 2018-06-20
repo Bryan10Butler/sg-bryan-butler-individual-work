@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/aop
+          http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+    <!-- Bean definitions go here -->
+
+    <!--Create instance of ProdFileImpl as orderProdDao-->
+    <bean id="orderProdDao" class="com.sg.flooringmastery.dao.FlooringDaoOrderProdFileImpl"/>
+    <!--Create instance of TrainingFileImpl as orderTrainingDao-->
+    <bean id="orderTrainingDao" class="com.sg.flooringmastery.dao.FlooringDaoOrderTrainingFileImpl"/>
+    <!--Create instance of ProductsFileImpl as productsDao-->
+    <!--Inject TestProducts into productsDao-->
+    <bean id="productsDao" class="com.sg.flooringmastery.dao.FlooringDaoProductsFileImpl">
+        <constructor-arg value="TestProducts.txt"/>
+    </bean>
+    <!--Create instance of FlooringDaoTaxesFileImpl-->
+    <!--Inject TestTaxes.txt into taxesDao-->
+    <bean id="taxesDao" class="com.sg.flooringmastery.dao.FlooringDaoTaxesFileImpl">
+        <constructor-arg value="TestTaxes.txt"/>
+    </bean>
+    <!-- stubs -->
+    <!--Create instance of StubImpl-->
+    <bean id="orderStubImpl" class="com.sg.flooringmastery.dao.FlooringDaoOrderStubImpl"/>
+    <!--Create instance of TaxesStubImpl as TaxesStubImpl-->
+    <bean id="taxesStubImpl" class="com.sg.flooringmastery.dao.FlooringDaoTaxesStubImpl"/>
+    <!--Create instance of ProductsStubImpl as productsStubImpl-->
+    <bean id="productsStubImpl" class="com.sg.flooringmastery.dao.FlooringDaoProductsStubImpl"/>
+    <!--Create instance of ServiceLayerImpl as serviceLayerImpl-->
+    <!--Inject all stubs into service layer-->
+    <bean id="serviceLayerImpl" class="com.sg.flooringmastery.service.FlooringServiceLayerImpl">
+        <constructor-arg ref="orderStubImpl"/>
+        <constructor-arg ref="taxesStubImpl"/>
+        <constructor-arg ref="productsStubImpl"/>
+    </bean>
+
+</beans>

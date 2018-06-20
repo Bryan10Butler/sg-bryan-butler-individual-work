@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="flooringCalculator:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="factorizer.war">
+      <element id="artifact" artifact-name="flooringCalculator:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/aop
+          http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+    <!-- Bean definitions go here -->
+
+    <!--tells spring container to instantiate an instance of UserIoConsoleImpl as userIO-->
+    <!--ID is reference to the class-->
+    <!--Class is used because Spring
+    needs to know which class it needs to instantiate an object from-->
+    <bean id="userIO"
+          class="com.sg.vendingmachine.ui.UserIOConsoleImpl"/>
+
+    <!--tells spring to instantiate an instance of VendingMachineView as view-->
+    <!--create constructor-arg because the view depends on the userIO-->
+    <!--we put a constructor in the view to pass in userIO at runtime-->
+    <!--When you create an instance of the view need to follow the constructor
+    path which is stating to pass in an instance of userIO-->
+    <bean id="view"
+          class="com.sg.vendingmachine.ui.VendingMachineView">
+        <constructor-arg ref="userIO"/>
+    </bean>
+
+    <!--check in the morning on the following-->
+    <bean id="vendingMachineDao"
+          class="com.sg.vendingmachine.dao.VendingMachineDaoFileImpl">
+        <constructor-arg value="src/main/Prod.txt"/>
+    </bean>
+
+    <bean id="auditDao"
+          class="com.sg.vendingmachine.dao.VendingMachineAuditDaoFileImpl"/>
+
+    <bean id="serviceLayer"
+          class="com.sg.vendingmachine.service.VendingMachineServiceFileImpl">
+        <constructor-arg ref="vendingMachineDao"/>
+        <constructor-arg ref="auditDao"/>
+    </bean>
+
+    <bean id="controller"
+          class="com.sg.vendingmachine.controller.VendingMachineController">
+        <constructor-arg ref="serviceLayer"/>
+        <constructor-arg ref="view"/>
+    </bean>
+
+    <bean id="loggingAdvice" class="com.sg.vendingmachine.advice.LoggingAdvice">
+        <constructor-arg ref="auditDao"/>
+    </bean>
+
+    <aop:config>
+        <!--reference the advice in advice package for the aspect below-->
+        <aop:aspect ref="loggingAdvice">
+
+            <!--our "point cut" is purchase item-->
+            <aop:pointcut id="purchaseItemPointCut" expression="execution(* com.sg.vendingmachine.service.VendingMachineServiceLayer.purchaseItem(..))"/>
+
+            <!--the code contained in the advice will run only after the pointcut "purchase item" has returned without error-->
+            <aop:after-returning
+                    method="createAuditEntry"
+                    pointcut-ref="purchaseItemPointCut"
+            />
+
+            <!--code contained in the advice will run only after the pointcut "purchase item" has thrown an exception"-->
+            <aop:after-throwing
+                    method="logAfterThrowing"
+                    throwing="ex"
+                    pointcut-ref="purchaseItemPointCut"
+            />
+        </aop:aspect>
+    </aop:config>
+
+</beans>

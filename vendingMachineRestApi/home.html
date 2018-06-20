@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>Vending Machine</title>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <style>
+            hr { background-color: blue; height: 1px;}
+            input, textarea {border-radius: 5px; background-color: #f1f1f1; border: none;}
+        </style>
+    </head>
+    <body>
+        <!--page setup-->
+        <div style="max-width: 1600px; margin: 0 auto; padding: 10px;">
+            <!--start of main container-->
+            <div class="container-fluid">
+                <div id="header" class="text-center">
+                    <h2>Vending Machine</h2>
+                    <hr>
+                </div>
+                <!--start of main row-->
+                <div class="row">
+                    <!--start of content div-->
+                    <div id="content">
+                        <!--start of items-->
+                        <div class="col-sm-9">
+                            <div id="items">
+                                <!--reserved space for itemArray from ajax call-->
+                            </div>
+                        </div>
+                        <!--start of form-->
+                        <div class="col-sm-3">
+                            <div id="forms" align="center">
+                                <h4>Total $ In</h4>
+                                <!--start of transactions form-->
+                                <form id-="transactionsForm">
+                                    <div class="form-group">
+                                        <input id="moneyInput" type="text" disabled/>
+                                    </div>
+                                    <div id="moneyButtons">
+                                        <!--add dollar-->
+                                        <button
+                                                class="btn btn-default col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                                                id="addDollar"
+                                                type="button"
+                                                onclick="addMoney(1)"
+                                        >Add Dollar
+                                        </button>
+                                        <!--add quarter-->
+                                        <button
+                                                class="btn btn-default col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                                                id="addQuarter"
+                                                type="button"
+                                                onclick="addMoney(.25)"
+                                        >Add Quarter
+                                        </button>
+                                        <!--add dime-->
+                                        <button
+                                                class="btn btn-default col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                                                id="addDime"
+                                                type="button"
+                                                onclick="addMoney(.1)"
+                                        >AddDime
+                                        </button>
+                                        <!--add nickel-->
+                                        <button
+                                                class="btn btn-default col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                                                id="addNickel"
+                                                type="button"
+                                                onclick="addMoney(.05)"
+                                        >AddNickel
+                                        </button>
+                                    </div><!--closing money buttons div-->
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><hr></div>
+                                    <!--messages and make purchase-->
+                                    <h4>Messages</h4>
+                                    <!--user messages-->
+                                    <div class="form-group">
+                                        <textarea id="userMessage" type="text" disabled></textarea>
+                                    </div>
+                                    <!--item number display-->
+                                    <div class="form-group">
+                                        <label for="itemNumber">ITEM:</label>
+                                        <input id="itemNumber" type="text" disabled/>
+                                    </div>
+                                    <!--make purchase button-->
+                                    <button
+                                            class="btn btn-default"
+                                            id="makePurchase"
+                                            type="button"
+                                    >Make Purchase
+                                    </button>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><hr></div>
+                                    <!--return change-->
+                                    <h4>Change</h4>
+                                    <div class="form-group">
+                                        <textarea id="changeInput" type="text" disabled></textarea>
+                                    </div>
+                                    <!--return change button-->
+                                    <button
+                                            class="btn btn-default"
+                                            id="returnChange"
+                                            type="button"
+                                    >Return Change
+                                    </button>
+                                </form><!--end of form-->
+                            </div>
+                        </div>
+                    </div><!--end of content div-->
+                </div><!--end of main row-->
+            </div><!--end of main container-->
+        </div><!--end of page setup-->
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/home.js"></script>
+    </body>
+</html>

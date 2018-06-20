@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="VendingMachinegSpringMVC:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="spring-mvc-webapp.war">
+      <element id="artifact" artifact-name="VendingMachinegSpringMVC:war exploded" />
+    </root>
+  </artifact>
+</component>

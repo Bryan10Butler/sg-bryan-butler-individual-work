@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Weather App</title>
+		<!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+    </head>
+    <body>
+		<div class="container">
+			<div class="text-center">
+				<h1>Weather Page</h1>
+			</div>
+			<hr/>
+			<ul class="list-group" id="errorMessages"></ul>
+			<form class="form-inline text-center" role="form" id="weatherForm">
+				<!--Zipcode-->
+				<div class="form-group">
+					<label for="zip-code" class="col-md-4 control-label">
+						Zipcode:
+					</label>
+					<div class="col-md-4">
+						<input type="text"
+						maxLength="5"
+						class="form-control"
+						id="zip-code"
+						placeholder="Zip Code" required/>
+					</div>
+				</div>
+				<!--Units-->
+				<div class="form-group">
+					<div class="cLabel">
+						<label for="units" class="col-md-4 control-label">
+							Units:
+						</label>
+						<div class="col-md-4">
+							<div class="cInput">
+								<select class="form-control" id="units">
+									<option value="imperial" selected>Imperial</option>
+									<option value="metric">Metric</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Button-->
+				<div class="form-group">
+					<div class="col-md-4">
+						<button type="button"
+							id="weather-button"
+							class="btn btn-default">
+							Get Weather
+						</button>
+					</div>
+				</div>
+			</form>
+			<hr/>
+			<div id="currentConditions">
+				<h2></h2>
+			</div>
+			<!--Container for Temp, Humidity, Wind-->
+			<div id="conditionsBody">
+				<div class="col-md-6" id="conditionImage">
+					<br/>
+					<h4 id="haze"></h4>
+				</div>
+				<div class="col-md-6" id="todayWeather">
+					<h4 id="temp"></h4>
+					<h4 id="humidity"></h4>
+					<h4 id="wind"></h4>
+				</div>
+			</div>
+			<div id="fiveDay">
+				<h2></h2>
+			</div>
+			<!--five day forecast-->
+			<div class="row">
+				<div class="col-md-12" id="fiveDayForecast">
+					<table id="weatherTable" class="table">
+						<tr>
+							<td id="day1"></td>
+							<td id="day2"></td>
+							<td id="day3"></td>
+							<td id="day4"></td>
+							<td id="day5"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	    <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/home.js"></script>
+    </body>
+</html>

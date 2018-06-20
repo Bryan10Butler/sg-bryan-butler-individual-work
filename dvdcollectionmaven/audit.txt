@@ -1,0 +1,26 @@
+2018-02-07T21:16:40.073 : Dvd Golf CREATED.
+2018-02-07T21:19:08.308 : Dvd Bryan CREATED.
+2018-02-07T21:20:07.840 : Dvd Golf REMOVED.
+2018-02-07T21:20:14.730 : Dvd Bryan REMOVED.
+2018-02-07T21:26:46.748 : Dvd Golf CREATED.
+2018-02-07T21:28:35.185 : Dvd Golf REMOVED.
+2018-02-07T21:28:56.795 : Dvd Golf CREATED.
+2018-02-07T22:36:52.329 : Dvd Golf REMOVED.
+2018-02-07T22:37:24.141 : Dvd Golf CREATED.
+2018-02-07T23:24:02.851 : Dvd Golf REMOVED.
+2018-02-07T23:24:21.478 : Dvd Golf CREATED.
+2018-02-08T10:54:49.868 : Dvd golf REMOVED.
+2018-02-08T11:06:13.135 : Dvd Golf CREATED.
+2018-02-08T11:08:09.131 : Dvd Bryan CREATED.
+2018-02-13T09:15:01.458 : Dvd b CREATED.
+2018-02-13T09:55:20.290 : Dvd Bryan REMOVED.
+2018-02-13T09:56:21.506 : Dvd b REMOVED.
+2018-02-13T09:56:50.240 : Dvd Golf REMOVED.
+2018-02-13T11:27:17.194 : Dvd Golf CREATED.
+2018-02-13T11:33:15.661 : Dvd b CREATED.
+2018-02-14T11:24:28.451 : createDvd: Title: Kelly|Release Date: 1990-01-01|MPPA Rating: R|Director: Bryan|Studio: Pixar|User Rating: Five
+2018-02-14T11:25:22.432 : removeDvd: Kelly
+2018-02-14T11:32:46.251 : createDvd: Title: Spring|Release Date: 1990-01-01|MPPA Rating: R|Director: Bryan|Studio: Pixar|User Rating: Five
+2018-02-14T11:33:08.915 : printMenuEditSelection: Title: Spring|Release Date: 1990-01-01|MPPA Rating: R|Director: Kelly|Studio: Pixar|User Rating: Five
+2018-02-23T22:12:09.712 : printMenuEditSelection: null
+2018-02-23T22:12:50.855 : printMenuEditSelection: Title: Golf|Release Date: 1990-01-01|MPPA Rating: R|Director: Kelly|Studio: Pixar|User Rating: Five
